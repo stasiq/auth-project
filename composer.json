@@ -1,0 +1,16 @@
+{
+    "name": "stasiq/auth-project",
+    "autoload": {
+        "psr-4": {
+            "Stasiq\\AuthProject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Stasiq"
+        }
+    ],
+    "require": {
+
+    }
+}
