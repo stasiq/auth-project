@@ -4,14 +4,10 @@ require 'vendor/autoload.php';
 use Monolog\Logger;
 use Faker\Factory as Faker;
 use Src\User;
-
-$fakerBio = Faker::create('ru_RU');
-$user = new User($fakerBio->name, $fakerBio->userName . rand(10, 100));
-//dump($user);
 ?>
 
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -28,19 +24,30 @@ $user = new User($fakerBio->name, $fakerBio->userName . rand(10, 100));
             <form class="mt-5">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Логин</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           placeholder="user123">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                            placeholder="user@mail.ru">
+
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Пароль</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                 </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Потдверждение пароля</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <label class="form-check-label" for="exampleCheck1">Согласен</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <p>Нет аккаунта? - <a href="/register.php">Регистрация</a></p>
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                <p class="mt-3">Есть аккаунт? - <a href="/">Авторизация</a></p>
             </form>
         </div>
     </div>

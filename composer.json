@@ -2,7 +2,8 @@
     "name": "stasiq/auth-project",
     "autoload": {
         "psr-4": {
-            "Stasiq\\AuthProject\\": "src/"
+            "Src\\": "src/",
+            "Src/Common\\": "src/Common"
         }
     },
     "authors": [
@@ -11,6 +12,8 @@
         }
     ],
     "require": {
-
+        "monolog/monolog": "^2.3",
+        "fakerphp/faker": "^1.16",
+        "symfony/var-dumper": "^5.3"
     }
 }
