@@ -1,0 +1,14 @@
+1. Создал файл htpasswd командой с тегом -с, для создания нового файла.
+        Команда
+        sudo htpasswd -c .htpasswd admin
+
+2. Заполнил поле пароля.
+
+3. В файле конфигурации проекта добавил следующие строки:
+
+        AuthUserFile /var/www/auth-project.loc/www/.htpasswd
+        AuthName "Password Protected Area"
+        AuthType Basic
+
+
+

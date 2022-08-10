@@ -1,9 +1,0 @@
-        <Directory  /var/www/auth-project.loc/www/>
-            AuthUserFile /var/www/auth-project.loc/www/.htpasswd
-            AuthName "Password Protected Area"
-            AuthType Basic
-            Require valid-user
-        </Directory>
-
-        Команда
-        sudo htpasswd -c .htpasswd username
