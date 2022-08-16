@@ -4,10 +4,15 @@ require 'vendor/autoload.php';
 use Monolog\Logger;
 use Faker\Factory as Faker;
 use Src\User;
+use Src\Db as Db;
+use Src\UsersModel as Users;
 
 $fakerBio = Faker::create('ru_RU');
 $user = new User($fakerBio->name, $fakerBio->userName . rand(10, 100));
 //dump($user);
+
+$data = Users::getItem(1);
+echo $data->name;
 ?>
 
 <!doctype html>

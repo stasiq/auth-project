@@ -8,7 +8,8 @@ class User
 
     public $name;
 
-    public function __construct($name, $login) {
+    public function __construct($name, $login)
+    {
         $this->name = $name;
         $this->login = $login;
     }
