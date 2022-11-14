@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'vendor/autoload.php';
 
 use Monolog\Logger;
@@ -6,12 +7,17 @@ use Faker\Factory as Faker;
 use Src\User;
 use Src\Db as Db;
 use Src\UsersModel as Users;
+use Src\Register as Register;
 
 $fakerBio = Faker::create('ru_RU');
 $user = new User($fakerBio->name, $fakerBio->userName . rand(10, 100));
 //dump($user);
 
-$data = Users::getItem(1);
+//$data = Users::getItem(1);
+
+$register = new Register();
+//$register->test();
+
 echo $data->name;
 ?>
 
@@ -30,20 +36,31 @@ echo $data->name;
 <div class="container">
     <div class="row">
         <div class="col-mb5">
-            <form class="mt-5">
+            <form action="reqs/signin.php" method="post" class="mt-5">
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Логин</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                           placeholder="user@mail.ru">
+                    <label for="username" class="form-label">Логин</label>
+                    <input name="username"  class="form-control" id="username"
+                           placeholder="Username1337">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input required name="password" type="password" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input required type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
+                <?php
+                if ($_SESSION['message']) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php
+                        echo $_SESSION['message'] . '<br>';
+                        $_SESSION['message'] = '';
+                        ?>
+                    </div>
+                    <?php
+                }
+                ?>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <p>Нет аккаунта? - <a href="/register.php">Регистрация</a></p>
             </form>

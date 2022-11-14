@@ -26,29 +26,27 @@ use Src\User;
             <form action="reqs/signup.php" method="post" class="mt-5">
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Логин</label>
-                    <input type="text" name="username" class="form-control" id="exampleInputUsername"
-                           aria-describedby="emailHelp"
+                    <input required type="text" name="username" class="form-control" id="exampleInputUsername"
                            placeholder="user123">
 
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                           aria-describedby="emailHelp"
+                    <label for="InputEmail1" class="form-label">Email</label>
+                    <input required type="email" name="email" class="form-control" id="InputEmail1"
                            placeholder="user@mail.ru">
 
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                    <label for="InputPassword1" class="form-label">Пароль</label>
+                    <input type="password" name="password" class="form-control" id="InputPassword1">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Потдверждение пароля</label>
-                    <input type="password" name="password_confirm" class="form-control" id="exampleInputPassword2">
+                    <label for="InputPassword2" class="form-label">Потдверждение пароля</label>
+                    <input type="password" name="password_confirm" class="form-control" id="eInputPassword2">
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" name="agreement" for="exampleCheck1">Согласен</label>
+                    <input type="checkbox" class="form-check-input" id="AgreeCheck">
+                    <label class="form-check-label" name="agreement" for="AgreeCheck">Согласен</label>
                 </div>
 
                 <?php

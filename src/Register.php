@@ -2,38 +2,52 @@
 
 namespace Src;
 
+use http\Header;
+use Src\Db;
+use PDO;
+
 class Register
 {
-    private static $username;
-    private static $email;
-    private static $password;
-    private static $password_confirm;
-    private static $errors = [];
 
-    public function __construct($username, $email, $password, $password_confirm)
+    public static function validatePass($password, $password_confirm)
     {
-        self::$username = $username;
-        self::$email = $email;
-        self::$password = $password;
-        self::$password_confirm = $password_confirm;
-    }
-
-    private static function validatePass()
-    {
-        if (self::$password !== self::$password_confirm) {
+        $_SESSION['message'] = [];
+        if ($password !== $password_confirm) {
             $_SESSION['message'][] = 'Пароли не совпадают';
-            self::$errors[] = 'password_confirm';
-        };
+
+        }
+
+        if (strlen($password) < 8) {
+            $_SESSION['message'][] = 'Необходимая длина пароля 8 символов';
+
+        }
+
+        if (count($_SESSION['message']) == 0) {
+            return true;
+
+        } else {
+            header('Location: /register.php');
+            return false;
+
+        }
     }
 
-    public static function registration()
+    public function registration($username, $email, $password, $password_confirm)
     {
-        if (empty(self::$errors)) {
-            $db = Db::getConnect();
-            $sql = 'INSERT INTO `users` (`name`, `email`, `admin`, `password`)
-VALUES ("self::$username", "self::$email ", NULL, "self::$password");';
-            $db->query($sql);
-            header('Location: ../register.php');
+        if (self::validatePass($password, $password_confirm)) {
+            $db = new Db();
+
+            $query = "INSERT INTO users (name, email, admin, password) VALUES (:username, :email, :admin, :password)";
+
+            $args = [
+                'username' => $username,
+                'email' => $email,
+                'admin' => NULL,
+                'password' => md5($_POST['password']),
+            ];
+
+            $db::sqlm($query, $args);
+            echo 'Добавлен';
         }
 
     }
