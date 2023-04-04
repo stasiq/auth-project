@@ -1,0 +1,19 @@
+{
+  "name": "auth-project",
+  "version": "1.0.0",
+  "description": "Авторизация, сессии, ооп, telegram bot, бд",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "gulp": "gulp -v"
+  },
+  "author": "s.konovalov@intensa.ru",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
